@@ -312,6 +312,9 @@ systemctl restart nrpe || :
 %attr(-, %daemon_user, %daemon_group) %dir %_localstatedir/log/merlin
 %attr(0440, root, root) %{_sysconfdir}/sudoers.d/merlin
 
+%exclude %{_docdir}/merlin/README.md
+%exclude %{_docdir}/merlin/CHANGELOG.md
+
 %files apps
 %defattr(-,root,root)
 %_libdir/merlin/import
@@ -325,11 +328,11 @@ systemctl restart nrpe || :
 %exclude %_libdir/merlin/mon/check.py
 %exclude %_libdir/merlin/mon/containerhealth.py
 
-%attr(600, root, root) %_libdir/merlin/mon/syscheck/db_mysql_check.sh
-%attr(600, root, root) %_libdir/merlin/mon/syscheck/fs_ext_state.sh
-
 %exclude %_libdir/merlin/mon/test.py*
 %exclude %_libdir/merlin/merlin.*
+
+%exclude %{_docdir}/merlin/README.md
+%exclude %{_docdir}/merlin/CHANGELOG.md
 
 %files slim
 %defattr(-,root,root)
@@ -356,6 +359,9 @@ systemctl restart nrpe || :
 %attr(-, %daemon_user, %daemon_group) %dir %_localstatedir/log/merlin
 %attr(0440, root, root) %{_sysconfdir}/sudoers.d/merlin
 
+%exclude %{_docdir}/merlin/README.md
+%exclude %{_docdir}/merlin/CHANGELOG.md
+
 %files apps-slim
 %defattr(-,root,root)
 %_libdir/merlin/oconf
@@ -366,11 +372,11 @@ systemctl restart nrpe || :
 %_bindir/merlin_cluster_tools
 %exclude %_libdir/merlin/mon/check.py
 
-%attr(600, root, root) %_libdir/merlin/mon/syscheck/db_mysql_check.sh
-%attr(600, root, root) %_libdir/merlin/mon/syscheck/fs_ext_state.sh
-
 %exclude %_libdir/merlin/mon/test.py*
 %exclude %_libdir/merlin/merlin.*
+
+%exclude %{_docdir}/merlin/README.md
+%exclude %{_docdir}/merlin/CHANGELOG.md
 
 %clean
 rm -rf %buildroot
