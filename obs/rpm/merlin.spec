@@ -300,6 +300,7 @@ systemctl restart nrpe || :
 %exclude %_libdir/merlin/mon/test.py*
 %exclude %_bindir/cukemerlin
 %exclude /usr/share/merlin/app-tests/
+$exclude %{_unitdir}/merlind
 %doc %{_docdir}/merlin/README.md
 %doc %{_docdir}/merlin/CHANGELOG.md
 
