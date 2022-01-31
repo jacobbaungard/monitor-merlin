@@ -206,6 +206,9 @@ cp nrpe-merlin.cfg %buildroot%_sysconfdir/nrpe.d
 # Ensure oconf dir exists
 %{__install} -d %{buildroot}%{naemon_confdir}/oconf
 
+cp README.md %buildroot/%_docdir/README.md
+cp CHANGELOG.md %buildroot/%_docdir/CHANGELOG.md
+
 %check
 python2 tests/pyunit/test_log.py --verbose
 python2 tests/pyunit/test_oconf.py --verbose
