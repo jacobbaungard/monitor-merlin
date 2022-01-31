@@ -192,12 +192,12 @@ autoreconf -i -s
 %install
 %make_install naemon_user=$(id -un) naemon_group=$(id -gn)
 
-ln -s ../../../../usr/bin/merlind %buildroot/%mod_path/merlind
-ln -s ../../../../%_libdir/merlin/import %buildroot/%mod_path/import
-ln -s ../../../../%_libdir/merlin/rename %buildroot/%mod_path/rename
-ln -s ../../../../%_libdir/merlin/showlog %buildroot/%mod_path/showlog
-ln -s ../../../../%_libdir/merlin/merlin.so %buildroot/%mod_path/merlin.so
-ln -s op5 %buildroot/%_bindir/mon
+cp ../../../../usr/bin/merlind %buildroot/%mod_path/merlind
+cp ../../../../%_libdir/merlin/import %buildroot/%mod_path/import
+cp ../../../../%_libdir/merlin/rename %buildroot/%mod_path/rename
+cp ../../../../%_libdir/merlin/showlog %buildroot/%mod_path/showlog
+cp ../../../../%_libdir/merlin/merlin.so %buildroot/%mod_path/merlin.so
+cp op5 %buildroot/%_bindir/mon
 
 cp cukemerlin %buildroot/%_bindir/cukemerlin
 cp -r apps/tests %buildroot/usr/share/merlin/app-tests
