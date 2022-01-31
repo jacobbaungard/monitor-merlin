@@ -173,7 +173,7 @@ keygen_CFLAGS = $(AM_CFLAGS)
 keygen_LDADD = -lsodium
 
 check_PROGRAMS = $(TESTS) test-dbwrap merlincat cukemerlin
-TESTS = sltest test-csync test-lparse hooktest stringutilstest showlogtest bltest codectest importlogtest
+TESTS = sltest test-csync test-lparse stringutilstest showlogtest bltest codectest importlogtest
 TESTS_ENVIRONMENT = G_DEBUG=fatal-criticals; export G_DEBUG;
 
 sltest_SOURCES = tests/sltest.c tools/test_utils.c tools/slist.c tools/slist.h
