@@ -300,6 +300,9 @@ systemctl restart nrpe || :
 %exclude %_libdir/merlin/mon/test.py*
 %exclude %_bindir/cukemerlin
 %exclude /usr/share/merlin/app-tests/
+%if 0%{?is_opensuse}
+%exclude /etc/init.d/merlind
+%endif
 
 %files -n monitor-merlin
 %defattr(-,root,root)
