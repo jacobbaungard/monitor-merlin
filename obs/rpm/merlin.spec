@@ -191,7 +191,8 @@ autoreconf -i -s
 
 %install
 %make_install naemon_user=$(id -un) naemon_group=$(id -gn)
-
+# debug
+ls -Rl
 cp op5 %buildroot/%_bindir/mon
 
 cp cukemerlin %buildroot/%_bindir/cukemerlin
