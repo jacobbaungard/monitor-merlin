@@ -23,26 +23,36 @@ License: GPLv2
 URL: https://github.com/ITRS-Group/monitor-merlin/
 Source0: monitor-merlin-%{version}.tar.gz
 BuildRoot: %{_tmppath}/monitor-%{name}-%{version}
-Requires: libaio
 Requires: merlin-apps >= %version
 Requires: monitor-merlin
 Requires: naemon-core
-Requires: mariadb-server
-Requires: glib2
 Requires: nrpe
-Requires: libdbi
-Requires: libdbi-dbd-mysql
-Requires: libsodium
 Requires: systemd
-BuildRequires: libsodium-devel
+%if 0%{?is_opensuse}
+Requires: libaio1
+Requires: libdbi3
+Requires: glib2-tools
+Requires: libsodium23
+Requires: libdbi-drivers-dbd-mysql
+Requires: mariadb
+BuildRequires: libmariadb-devel
+%else
+Requires: libdbi
+Requires: libaio
+Requires: glib2
+Requires: libsodium
+Requires: libdbi-dbd-mysql
+Requires: mariadb-server
 BuildRequires: mariadb-devel
 BuildRequires: naemon-devel
-BuildRequires: python2
-BuildRequires: gperf
 BuildRequires: check-devel
-BuildRequires: autoconf, automake, libtool
+%endif
+BuildRequires: libsodium-devel
 BuildRequires: glib2-devel
 BuildRequires: libdbi-devel
+BuildRequires: python2
+BuildRequires: gperf
+BuildRequires: autoconf, automake, libtool
 BuildRequires: pkgconfig
 BuildRequires: pkgconfig(gio-unix-2.0)
 
@@ -53,9 +63,7 @@ data into a variety of databases, using libdbi.
 
 %package slim
 Summary: Slim version of the merlin daemon
-Requires: libaio
 Requires: merlin-apps-slim >= %version
-Requires: glib2
 BuildRequires: naemon-devel
 BuildRequires: python2
 BuildRequires: gperf
@@ -65,6 +73,13 @@ BuildRequires: glib2-devel
 BuildRequires: libdbi-devel
 BuildRequires: pkgconfig
 BuildRequires: pkgconfig(gio-unix-2.0)
+%if 0%{?is_opensuse}
+Requires: glib2-tools
+Requires: libaio1
+%else
+Requires: glib2
+Requires: libaio
+%endif
 
 %description slim
 The merlin daemon is a multiplexing event-transport program designed to
@@ -75,7 +90,11 @@ slim version that installs fewer dependencies.
 %package -n monitor-merlin
 Summary: A Nagios module designed to communicate with the Merlin daemon
 Requires: naemon-core, merlin = %version-%release
+%if 0%{?is_opensuse}
+Requires: mariadb
+%else
 Requires: mariadb-server
+%endif
 Requires: systemd
 
 %description -n monitor-merlin
@@ -95,16 +114,17 @@ merlin daemon, which then takes appropriate action.
 %package apps
 Summary: Applications used to set up and aid a merlin/ninja installation
 Requires: rsync
-Requires: mariadb-server
 %if 0%{?suse_version}
 Requires: libdbi1
 Requires: python-mysql
+Requires: mariadb
 %else
 %if 0%{?rhel} >= 8
 Requires: python2-PyMySQL
 %else
 Requires: MySQL-python
 %endif
+Requires: mariadb
 Requires: libdbi
 %endif
 requires: systemd
