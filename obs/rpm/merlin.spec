@@ -211,6 +211,10 @@ python2 tests/pyunit/test_log.py --verbose
 python2 tests/pyunit/test_oconf.py --verbose
 
 mkdir -p %buildroot%_localstatedir/merlin
+%if 0%{?is_opensuse}
+    mkdir -p %{buildroot}usr/share/doc/packages/
+    cp *.md %{buildroot}usr/share/doc/packages/merlin
+%endif
 
 %post
 systemctl daemon-reload
