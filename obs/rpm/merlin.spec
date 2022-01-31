@@ -192,11 +192,6 @@ autoreconf -i -s
 %install
 %make_install naemon_user=$(id -un) naemon_group=$(id -gn)
 
-cp ../../../../usr/bin/merlind %buildroot/%mod_path/merlind
-cp ../../../../%_libdir/merlin/import %buildroot/%mod_path/import
-cp ../../../../%_libdir/merlin/rename %buildroot/%mod_path/rename
-cp ../../../../%_libdir/merlin/showlog %buildroot/%mod_path/showlog
-cp ../../../../%_libdir/merlin/merlin.so %buildroot/%mod_path/merlin.so
 cp op5 %buildroot/%_bindir/mon
 
 cp cukemerlin %buildroot/%_bindir/cukemerlin
@@ -286,7 +281,6 @@ systemctl restart nrpe || :
 %dir %attr(750, %daemon_user, %daemon_group) %mod_path
 %attr(660, %daemon_user, %daemon_group) %config(noreplace) %mod_path/merlin.conf
 %_datadir/merlin/sql
-%mod_path/merlind
 %_bindir/merlind
 %_libdir/merlin/install-merlin.sh
 %_sysconfdir/logrotate.d/merlin
@@ -307,7 +301,6 @@ systemctl restart nrpe || :
 %files -n monitor-merlin
 %defattr(-,root,root)
 %_libdir/merlin/merlin.*
-%mod_path/merlin.so
 %attr(-, %daemon_user, %daemon_group) %naemon_confdir/module-conf.d/merlin.cfg
 %attr(-, %daemon_user, %daemon_group) %dir %naemon_confdir/oconf
 %attr(-, %daemon_user, %daemon_group) %dir %_localstatedir/lib/merlin
@@ -321,9 +314,6 @@ systemctl restart nrpe || :
 %_libdir/merlin/rename
 %_libdir/merlin/oconf
 %_libdir/merlin/keygen
-%mod_path/import
-%mod_path/showlog
-%mod_path/rename
 %_libdir/merlin/mon
 %_bindir/mon
 %_bindir/op5
@@ -339,7 +329,6 @@ systemctl restart nrpe || :
 %files slim
 %defattr(-,root,root)
 %attr(660, %daemon_user, %daemon_group) %config(noreplace) %mod_path/merlin.conf
-%mod_path/merlind
 %_bindir/merlind
 %_libdir/merlin/install-merlin.sh
 %_sysconfdir/logrotate.d/merlin
@@ -356,7 +345,6 @@ systemctl restart nrpe || :
 %files -n monitor-merlin-slim
 %defattr(-,root,root)
 %_libdir/merlin/merlin.*
-%mod_path/merlin.so
 %attr(-, %daemon_user, %daemon_group) %naemon_confdir/module-conf.d/merlin.cfg
 %attr(-, %daemon_user, %daemon_group) %dir %naemon_confdir/oconf
 %attr(-, %daemon_user, %daemon_group) %dir %_localstatedir/lib/merlin
