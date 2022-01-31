@@ -193,7 +193,7 @@ autoreconf -i -s
 %make_install naemon_user=$(id -un) naemon_group=$(id -gn)
 # debug
 ls -Rl
-cp op5 %buildroot/%_bindir/mon
+cp apps/op5 %buildroot/%_bindir/mon
 
 cp cukemerlin %buildroot/%_bindir/cukemerlin
 cp -r apps/tests %buildroot/usr/share/merlin/app-tests
