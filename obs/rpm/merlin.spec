@@ -206,10 +206,6 @@ cp nrpe-merlin.cfg %buildroot%_sysconfdir/nrpe.d
 # Ensure oconf dir exists
 %{__install} -d %{buildroot}%{naemon_confdir}/oconf
 
-mkdir -p %buildroot/%_docdir/packages/merlin
-cp README.md %buildroot/%_docdir/packages/merlin/README.md
-cp CHANGELOG.md %buildroot/%_docdir/packages/merlin/CHANGELOG.md
-
 %check
 python2 tests/pyunit/test_log.py --verbose
 python2 tests/pyunit/test_oconf.py --verbose
@@ -300,9 +296,7 @@ systemctl restart nrpe || :
 %exclude %_libdir/merlin/mon/test.py*
 %exclude %_bindir/cukemerlin
 %exclude /usr/share/merlin/app-tests/
-$exclude %{_unitdir}/merlind
-%doc %{_docdir}/merlin/README.md
-%doc %{_docdir}/merlin/CHANGELOG.md
+%exclude %{_unitdir}/merlind
 
 %files -n monitor-merlin
 %defattr(-,root,root)
@@ -342,8 +336,6 @@ $exclude %{_unitdir}/merlind
 %attr(-, %daemon_user, %daemon_group) %dir %_localstatedir/run/merlin
 %attr(-, %daemon_user, %daemon_group) %dir %_localstatedir/cache/merlin
 %attr(-, %daemon_user, %daemon_group) %dir %_localstatedir/cache/merlin/config
-%doc %{_docdir}/merlin/README.md
-%doc %{_docdir}/merlin/CHANGELOG.md
 
 %files -n monitor-merlin-slim
 %defattr(-,root,root)
