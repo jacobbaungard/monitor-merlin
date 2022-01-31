@@ -297,6 +297,8 @@ systemctl restart nrpe || :
 %exclude %_bindir/cukemerlin
 %exclude /usr/share/merlin/app-tests/
 %exclude %{_unitdir}/merlind
+%_docdir/CHANGELOG.md
+%_docdir/README.md
 
 %files -n monitor-merlin
 %defattr(-,root,root)
