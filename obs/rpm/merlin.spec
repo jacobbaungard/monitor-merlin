@@ -206,7 +206,7 @@ cp nrpe-merlin.cfg %buildroot%_sysconfdir/nrpe.d
 # Ensure oconf dir exists
 %{__install} -d %{buildroot}%{naemon_confdir}/oconf
 
-mkdir -p %buildroot/%_docdir/merlin
+mkdir -p %buildroot/%_docdir/packages/merlin
 cp README.md %buildroot/%_docdir/packages/merlin/README.md
 cp CHANGELOG.md %buildroot/%_docdir/packages/merlin/CHANGELOG.md
 
