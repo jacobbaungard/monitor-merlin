@@ -212,8 +212,8 @@ python2 tests/pyunit/test_oconf.py --verbose
 
 mkdir -p %buildroot%_localstatedir/merlin
 %if 0%{?is_opensuse}
-    mkdir -p %{buildroot}usr/share/doc/packages/
-    cp *.md %{buildroot}usr/share/doc/packages/merlin
+    mkdir -p %{buildroot}usr/share/doc/packages/merlin
+    cp *.md %{buildroot}usr/share/doc/packages/merlin/
 %endif
 
 %post
@@ -300,9 +300,6 @@ systemctl restart nrpe || :
 %exclude %_libdir/merlin/mon/test.py*
 %exclude %_bindir/cukemerlin
 %exclude /usr/share/merlin/app-tests/
-%exclude %{_unitdir}/merlind
-%_docdir/CHANGELOG.md
-%_docdir/README.md
 
 %files -n monitor-merlin
 %defattr(-,root,root)

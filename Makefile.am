@@ -7,7 +7,6 @@ bin_PROGRAMS = merlind
 # Ensure automake is OK with CHANGELOG.md
 ChangeLog: CHANGELOG.md
 EXTRA_DIST = CHANGELOG.md
-dist_doc_DATA = CHANGELOG.md README.md
 
 merlinlibdir = $(pkglibdir)
 merlinlib_PROGRAMS = import showlog rename oconf keygen
